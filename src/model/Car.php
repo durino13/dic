@@ -13,11 +13,17 @@ class Car
 
     protected $color;
 
-    public function __construct($brand, $color, Tires $tires)
+    protected $engine;
+
+    protected $lights;
+
+    public function __construct($brand, $color, Engine $engine, Tires $tires, Lights $lights)
     {
         $this->brand = $brand;
         $this->tires = $tires;
         $this->color = $color;
+        $this->engine = $engine;
+        $this->lights = $lights;
     }
 
     /**
@@ -68,9 +74,41 @@ class Car
         $this->color = $color;
     }
 
+    /**
+     * @return Engine
+     */
+    public function getEngine(): Engine
+    {
+        return $this->engine;
+    }
+
+    /**
+     * @param Engine $engine
+     */
+    public function setEngine(Engine $engine)
+    {
+        $this->engine = $engine;
+    }
+
+    /**
+     * @return Lights
+     */
+    public function getLights(): Lights
+    {
+        return $this->lights;
+    }
+
+    /**
+     * @param Lights $lights
+     */
+    public function setLights(Lights $lights)
+    {
+        $this->lights = $lights;
+    }
+
     public function toString()
     {
-        echo $this->getBrand() . ', color:' . $this->getColor() . ', tires: ' . $this->getTires()->getBrand();
+        echo $this->getBrand() . ', color:' . $this->getColor() . ', engine: ' . $this->getEngine() . ' tires: ' . $this->getTires()->getBrand();
     }
 
 }

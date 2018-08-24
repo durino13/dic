@@ -11,11 +11,18 @@ class CarFactory
 
     const CAR_AUDI = 'CAR_AUDI';
 
-    private $tiresFactory;
+    protected $tiresFactory;
 
-    public function __construct(TiresFactory $tiresFactory)
+    protected $engineFactory;
+
+    protected $lightsFactory;
+
+
+    public function __construct(EngineFactory $engineFactory, TiresFactory $tiresFactory, LightsFactory $lightsFactory)
     {
         $this->tiresFactory = $tiresFactory;
+        $this->engineFactory = $engineFactory;
+        $this->lightsFactory = $lightsFactory;
     }
 
     /**
@@ -27,9 +34,10 @@ class CarFactory
 
         switch($type) {
             case self::CAR_AUDI:
-                // TODO Replace with builder ..
+                $engine = $this->engineFactory->create();
                 $tires = $this->tiresFactory->create('Goodyear', 17);
-                return new Car('Audi', 'blue', $tires);
+                $lights = $this->lightsFactory->create();
+                return new Car('Audi', 'blue', $engine, $tires, $lights);
             case self::CAR_RENAULT:
                 $tires = $this->tiresFactory->create('Michelin', 14);
                 return new Car('Renault', 'red', $tires);

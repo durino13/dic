@@ -10,7 +10,5 @@ $carFactory = $container->get('CarFactory');
 
 // Now, you can use the factory to create new instances of the object
 $audi = $carFactory->create(CarFactory::CAR_AUDI);
-$renault = $carFactory->create(CarFactory::CAR_RENAULT);
 
 var_dump($audi);
-var_dump($renault);
