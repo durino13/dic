@@ -89,5 +89,5 @@ $lights = $this->lightsFactory->create();
 return new Car('Audi', 'blue', $engine, $tires, $lights);
 ```
   
-Check the project source code for more info ...
+Check the project source code https://github.com/durino13/dic for more info.
 
